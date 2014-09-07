@@ -32,13 +32,10 @@ def pol2cart(R,r):
     z=[]
     for i in theta:
         for j in phi:
-            x.append(round((R+r)*sin(i)*cos(j),5))
-            y.append(round((R+r)*sin(i)*sin(j),5))
-            z.append(round((R+r)*cos(j),5))
+            x.append(round(R*sin(i)*cos(j),5))
+            y.append(round(R*sin(i)*sin(j),5))
+            z.append(round(R*cos(j),5))
     return x,y,z
-
-def write2file(x,y,z):
-    
 
 def main():
     R=float(raw_input('Radius(Main Sphere) : '))
