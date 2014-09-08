@@ -44,7 +44,7 @@ def write2file(x,y,z,r):
     ctr=0
     for i,j,k in set(zip(x,y,z)):
         ctr=ctr+1
-        fout.write("solid main%d = sphere(%f, %f, %f,  %f)_maxh=3.0 ;\n" % (ctr, i, j, k, r))
+        fout.write("solid main%d = sphere(%f, %f, %f; %f)_maxh=3.0 ;\n" % (ctr, i, j, k, r))
     fout.close()
 
 def plotSpheres(x,y,z,r,R):
