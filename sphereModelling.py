@@ -27,7 +27,7 @@ from visual import *
 def pol2cart(R,r):
     th_step=(2*r)/(R+r)
     theta=numpy.arange(0,2*pi,th_step)
-    phi=theta
+    phi=numpy.arange(0,pi,th_step)
     x=[]
     y=[]
     z=[]
