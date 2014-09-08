@@ -34,17 +34,17 @@ def pol2cart(R,r):
     for i in theta:
         for j in phi:
             print i,j
-            x.append(round(R*sin(i)*cos(j),5))
-            y.append(round(R*sin(i)*sin(j),5))
-            z.append(round(R*cos(j),5))
+            x.append(round((r+R)*sin(i)*cos(j),5))
+            y.append(round((r+R)*sin(i)*sin(j),5))
+            z.append(round((r+R)*cos(j),5))
     return x,y,z
 
 def write2file(x,y,z,r):
     fout=open("coordinates.txt",'w')
     ctr=0
-    for i,j,k in zip(x,y,z):
+    for i,j,k in set(zip(x,y,z)):
         ctr=ctr+1
-        fout.write("solid main%d = sphere(%d, %d, %d,  %d)_maxh=3.0 ;\n" % (ctr, i, j, k, r))
+        fout.write("solid main%d = sphere(%f, %f, %f,  %f)_maxh=3.0 ;\n" % (ctr, i, j, k, r))
     fout.close()
 
 def plotSpheres(x,y,z,r,R):
@@ -56,7 +56,7 @@ def main():
     R=float(raw_input('Radius(Main Sphere) : '))
     r=float(raw_input('Radius(Small Sphere): '))
     x,y,z=pol2cart(R,r)
-    for i,j,k in zip(x,y,z):
+    for i,j,k in set(zip(x,y,z)):
         print i,j,k
     write2file(x,y,z,r)
     plotSpheres(x,y,z,r,R)
